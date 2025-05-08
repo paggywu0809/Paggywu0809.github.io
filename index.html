@@ -1,222 +1,66 @@
-1<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>給我最愛的人</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>給你的一封信</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
       font-family: "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(120deg, #ffe0f0, #f0e0ff);
-      animation: bgShift 10s ease infinite alternate;
-   }
-@media (max-width: 600px) {
-  .container {
-    padding: 16px;
-    font-size: 16px;
-  }
-
-  .message {
-    font-size: 18px;
-  }
-}
+      background: linear-gradient(120deg, #ffd1dc, #ffe3e3, #fff0f5);
+      animation: bgShift 10s ease infinite;
+    }
 
     @keyframes bgShift {
-      0% { background: linear-gradient(120deg, #ffe0f0, #f0e0ff); }
-      100% { background: linear-gradient(120deg, #f0e0ff, #ffe0f0); }
+      0% { background: linear-gradient(120deg, #ffd1dc, #ffe3e3, #fff0f5); }
+      100% { background: linear-gradient(120deg, #fff0f5, #ffe3e3, #ffd1dc); }
     }
 
     .container {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-  text-align: left;
-  line-height: 1.8;
-  font-size: 18px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 40px;
     }
 
     .message {
-      font-size:20px;
-      color: #c1446b;
-      max-width: 700px;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 20px;
-      border: 3px dashed #f88;
-      padding: 30px;
-      white-space: pre-wrap;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
+      font-size: 24px;
+      line-height: 1.6;
+      margin-bottom: 40px;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    .overlay {
-      position: fixed;
-      z-index: 3;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 240, 245, 0.95);
+    .btn-box {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      gap: 10px;
     }
 
-    .overlay button {
-      font-size: 22px;
-      padding: 12px 24px;
-      background: #c1446b;
+    .btn {
+      padding: 10px 16px;
+      background-color: #ff99aa;
       color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-    .end-button {
-      margin-top: 40px;
-      font-size: 20px;
-      padding: 10px 20px;
-      background-color: #f88;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .petal {
-      position: fixed;
-      top: -50px;
-      width: 20px;
-      height: 20px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Red_rose_petals.svg/120px-Red_rose_petals.svg.png') no-repeat center;
-      background-size: contain;
-      pointer-events: none;
-      animation: fall linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    .mouse-heart {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: pink;
-      transform: rotate(45deg);
-      pointer-events: none;
-      z-index: 999;
-      animation: scaleOut 0.6s ease-out forwards;
-    }
-
-    .mouse-heart::before,
-    .mouse-heart::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: pink;
-      border-radius: 50%;
-    }
-
-    .mouse-heart::before {
-      top: -5px;
-      left: 0;
-    }
-
-    .mouse-heart::after {
-      left: -5px;
-      top: 0;
-    }
-
-    @keyframes scaleOut {
-      to {
-        transform: scale(2) rotate(45deg);
-        opacity: 0;
-      }
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-
-  <div class="overlay" id="overlay">
-    <h2>請按「小公主的信」</h2>
-    <button onclick="showMessage()">小公主的信</button>
-  </div>
-
   <div class="container">
-    <div class="message" id="message">
-嗨我的男朋友：
-
-今天是5月9日！應該是你最最期待的日子，希望在這個日子裡，我們有好好的在彼此身邊。
-
-這天的我很忙碌，我一直都是你最疼愛的小呆瓜，即便你把我當公主看待，我也始終不覺得我自己是個公主。
-
-公主要負擔的責任很重，就像我曾經所說的，我們怎麼樣才可以成為無憂無慮的人？
-
-在一周年的這天，大家都需要我這個水水，而我知道，你需要你的小沝，想念我的飛撲抱抱。
-
-還用心規劃這一次的旅程，聽說要帶我去海邊阿...下雨可能就去不了了，你要知道你女人可是水神，重要的日子都會下雨，所以今天，格外重要。
-
-謝謝你出現在我的生活中，給我溫暖，給我愛，給我我從來沒有的感覺，只為了我的健康快樂，不在乎我到底有沒有把事情做好。
-
-好想好想好想跟你一起住，對不起今年我食言了，說好大四那年我要去跟你一起同居的，可是我的能力沒有讓我做到這一點。
-
-只要有你在的地方，你的懷裡，都是我最安心，最有安全感的地方。
-
-我不在乎你的名利你的錢，你一直都很優秀，我也知道人與人的相處本來就是會遇到一堆困難。
-
-我相信只要是你你就一定會成功，因為是你，請你拿出你的自信。
-
-希望我的病好了以後，我們兩個可以充滿自信的在各自領域發光發熱，而我們兩個也各自成為了各自的最好的支持。
-
-最後的最後，希望你繼續愛我  
-吳小沝
+    <div class="message">
+      親愛的：<br/><br/>
+      這是一封獻給你的文字信，代表我的一點點心意。希望你感受到溫暖與愛。<br/><br/>
     </div>
-    <button class="end-button" onclick="showFinalHearts()">按我！</button>
+
+    <div class="btn-box">
+      <a href="#" class="btn">按我！</a>
+      <a href="gallery.html" class="btn">繼續</a>
+    </div>
   </div>
-
-  <script>
-    function showMessage() {
-      document.getElementById('overlay').style.display = 'none';
-      document.querySelector('.container').style.display = 'flex';
-      startPetals();
-    }
-
-    function showFinalHearts() {
-      for (let i = 0; i < 15; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'mouse-heart';
-        heart.style.left = `${Math.random() * window.innerWidth}px`;
-        heart.style.top = `${Math.random() * window.innerHeight}px`;
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 600);
-      }
-    }
-
-    function startPetals() {
-      for (let i = 0; i < 15; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
-        petal.style.left = `${Math.random() * 100}vw`;
-        petal.style.animationDuration = `${6 + Math.random() * 5}s`;
-        document.body.appendChild(petal);
-      }
-    }
-  </script>
 </body>
 </html>
